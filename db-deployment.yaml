@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-deployment
+  labels:
+    app: votify
+    component: db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: db
+  template:
+    metadata:
+      labels:
+        component: db
+    spec:
+      containers:
+      - name: db
+        image: postgres:9.4
+        env:
+        - name: POSTGRES_PASSWORD
+          value: "password"
+        ports:
+        - containerPort: 5432

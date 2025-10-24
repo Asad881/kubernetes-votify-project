@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: result-app-service
+  labels:
+    app: votify
+    component: result-app-service
+spec:
+  type: NodePort
+  selector:
+    component: result-app
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30005

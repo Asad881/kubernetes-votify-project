@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: voting-app-service
+  labels:
+    app: votify
+    component: voting-app-service
+spec:
+  type: NodePort
+  selector:
+    component: voting-app
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30004
